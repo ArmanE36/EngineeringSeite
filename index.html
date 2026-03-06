@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majidi Engineering | CAD & FEM Dienstleistungen</title>
+    <style>
+        /* Design-System */
+        :root {
+            --primary: #0a2647; /* Profi-Blau */
+            --accent: #2c7da0;  /* Ingenieurs-Blau-Hell */
+            --light: #f8f9fa;
+            --dark: #1a1a1b;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(10, 38, 71, 0.95);
+            backdrop-filter: blur(10px);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a2647 0%, #144272 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn-main {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: #348eb4;
+        }
+
+        /* Sektionen */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Leistungen Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border-bottom: 5px solid transparent;
+        }
+
+        .card:hover {
+            background: var(--white);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .software-badge {
+            display: inline-block;
+            background: #e1e8f0;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Über Mich */
+        .about-box {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text h3 { margin-bottom: 20px; font-size: 1.8rem; }
+
+        /* Kontakt */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h4 {
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #888;
+            padding: 40px 10%;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .contact-container { grid-template-columns: 1fr; }
+            .about-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Majidi Engineering</div>
+        <ul class="nav-links">
+            <li><a href="#home">Start</a></li>
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#ueber-mich">Profil</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Innovative Ingenieurlösungen</h1>
+            <p>Spezialisierte CAD-Konstruktion in Inventor und präzise FEM-Simulationen mit Ansys für Ihren Erfolg.</p>
+            <a href="#kontakt" class="btn-main">Projektanfrage senden</a>
+        </div>
+    </section>
+
+    <section id="leistungen">
+        <div class="section-header">
+            <h2>Dienstleistungen</h2>
+        </div>
+        <div class="services-grid">
+            <div class="card">
+                <h3>CAD-Konstruktion</h3>
+                <p>Entwicklung von Einzelteilen bis hin zu komplexen Baugruppen unter Berücksichtigung von Fertigungsverfahren.</p>
+                <ul>
+                    <li>Parametrische 3D-Modellierung</li>
+                    <li>Technische Zeichnungssätze</li>
+                    <li>Baugruppenmanagement</li>
+                </ul>
+                <div class="software-badge">Software: Autodesk Inventor</div>
+            </div>
+
+            <div class="card">
+                <h3>FEM-Berechnung</h3>
+                <p>Validierung und Optimierung Ihrer Bauteile durch moderne Simulationstechniken zur Vermeidung von Prototypenfehlern.</p>
+                <ul>
+                    <li>Statisch-mechanische Analysen</li>
+                    <li>Bauteiloptimierung & Leichtbau</li>
+                    <li>Materialermüdung & Verformung</li>
+                </ul>
+                <div class="software-badge">Software: Ansys</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ueber-mich">
+        <div class="about-box">
+            <div class="about-text">
+                <h3>Über mich</h3>
+                <p>Mein Name ist <strong>Arman Majidi</strong>. Als Ingenieur mit einem Bachelor-Abschluss in Maschinenbau und einem laufenden Master-Studium in Fahrzeugtechnik biete ich Ihnen Dienstleistungen auf höchstem akademischen und praktischen Niveau.</p>
+                <br>
+                <p>Ich verstehe mich als Partner für mittelständische Unternehmen und Entwicklungsabteilungen, die kurzfristig Expertise in der Konstruktion und numerischen Simulation benötigen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt">
+        <div class="section-header">
+            <h2>Kontakt</h2>
+        </div>
+        <div class="contact-container">
+            <div>
+                <div class="info-item">
+                    <h4>E-Mail</h4>
+                    <p>kontakt@majidi-engineering.de</p>
+                </div>
+                <div class="info-item">
+                    <h4>Mobil</h4>
+                    <p>+49 (0) 1573 6219504</p>
+                </div>
+                <div class="info-item">
+                    <h4>Standort</h4>
+                    <p>Potsdam & Remote</p>
+                </div>
+            </div>
+            <div style="text-align: center; display: flex; align-items: center; justify-content: center;">
+                <a href="mailto:kontakt@majidi-engineering.de?subject=Anfrage%20Ingenieurdienstleistung" class="btn-main">Direkt E-Mail schreiben</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Majidi Engineering | <a href="#" style="color:#888;">Impressum</a> | <a href="#" style="color:#888;">Datenschutz</a></p>
+    </footer>
+
+</body>
+</html>
